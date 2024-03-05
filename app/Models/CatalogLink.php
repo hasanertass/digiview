@@ -13,8 +13,8 @@ class CatalogLink extends Model
     protected $primaryKey = 'id';
 
     protected $fillable = ['id', 'merchant_id', 'file_path', 'icon_link'];
-    public function merchant()
+    public function user()
     {
-        return $this->belongsTo(Merchant::class, 'merchant_id');
+        return $this->belongsTo(User::class, 'merchant_id');
     }
 }

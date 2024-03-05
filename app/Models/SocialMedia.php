@@ -13,8 +13,8 @@ class SocialMedia extends Model
     protected $primaryKey = 'id';
 
     protected $fillable = ['id', 'merchant_id', 'social_media_name', 'social_media_icon', 'social_media_url'];
-    public function merchant()
+    public function user()
     {
-        return $this->belongsTo(Merchant::class, 'merchant_id');
+        return $this->belongsTo(User::class, 'merchant_id');
     }
 }

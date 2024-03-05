@@ -1,7 +1,8 @@
 <?php
 
+use App\Http\Controllers\AuthController;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\MerchantController;
+use App\Http\Controllers\UserController;
 
 /*
 |--------------------------------------------------------------------------
@@ -17,7 +18,9 @@ use App\Http\Controllers\MerchantController;
 Route::get('/', function () {
     return view('welcome');
 });
-Route::resource('merchant', MerchantController::class);
-Route::get('/hasan-ertass', function () {
-    return view('ui_panel.index');
+Route::resource('merchant', UserController::class);
+
+Route::get('/login', function () {
+    return view('merchant_panel.login');
 });
+Route::post('login',[AuthController::class,'login'])->name('login');

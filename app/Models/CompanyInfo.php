@@ -13,8 +13,8 @@ class CompanyInfo extends Model
     protected $primaryKey = 'id';
 
     protected $fillable = ['id', 'merchant_id', 'sector', 'website', 'tel', 'email', 'tax_administration', 'VKN', 'billing_address', 'address'];
-    public function merchant()
+    public function user()
     {
-        return $this->belongsTo(Merchant::class, 'merchant_id');
+        return $this->belongsTo(User::class, 'merchant_id');
     }
 }
