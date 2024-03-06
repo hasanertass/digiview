@@ -40,7 +40,7 @@ class UserController extends Controller
     public function show(string $url)
     {
         //
-        $merchant = User::Where('url', $url);
+        $merchant = User::Where('url', $url)->first();
         return view('merchant_panel.index', compact('merchant'));
     }
 

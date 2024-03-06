@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\User;
 use Illuminate\Http\Request;
 
 class CompanyInfoController extends Controller
@@ -33,9 +34,11 @@ class CompanyInfoController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(string $id)
+    public function show(string $url)
     {
         //
+        $merchant=User::Where('url',$url)->first();
+        return view('merchant_panel.company.index',compact('merchant'));
     }
 
     /**

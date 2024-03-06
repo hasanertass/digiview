@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\SocialMedia;
+use App\Models\User;
 use Illuminate\Http\Request;
 
 class SocialMediaController extends Controller
@@ -33,9 +35,12 @@ class SocialMediaController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(string $id)
+    public function show(string $url)
     {
         //
+        $merchant=User::Where('url',$url)->first();
+        $socialmedias=SocialMedia::where('merchant_id',$merchant->id)->get();
+        return view('merchant_panel.socialmedia.index',compact('merchant','socialmedias'));
     }
 
     /**

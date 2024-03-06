@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\User;
 use Illuminate\Http\Request;
 
 class PersonalInfoController extends Controller
@@ -12,6 +13,7 @@ class PersonalInfoController extends Controller
     public function index()
     {
         //
+        return view('merchant_panel.personalinfo');
     }
 
     /**
@@ -33,9 +35,11 @@ class PersonalInfoController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(string $id)
+    public function show(string $url)
     {
         //
+        $merchant=User::Where('url',$url)->first();
+        return view('merchant_panel.person.index',compact('merchant'));
     }
 
     /**

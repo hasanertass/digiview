@@ -12,7 +12,7 @@ class BankInfo extends Model
     public $timestamps = false;
     protected $primaryKey = 'id';
 
-    protected $fillable = ['id', 'merchant_id', 'bank_name', 'iban_no'];
+    protected $fillable = ['id', 'merchant_id', 'bank_name', 'iban_no','name_surname'];
     public function user()
     {
         return $this->belongsTo(User::class, 'merchant_id');
