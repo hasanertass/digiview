@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class CompanyInfo extends Model
 {
     use HasFactory;
-    protected $table = 'catalog_link';
+    protected $table = 'company_info';
     public $timestamps = false;
     protected $primaryKey = 'id';
 

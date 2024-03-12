@@ -1,86 +1,146 @@
+<style>
+    .form-field input {
+        width: 100%;
+    }
+
+    .my-element-black {
+        color: black !important;
+    }
+
+</style>
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
     @include('merchant_panel.layouts.header')
 </head>
-
-<body class="g-sidenav-show  bg-gray-200">
+<body class="g-sidenav-show">
     @include('merchant_panel.layouts.sidebar')
     <main class="main-content position-relative max-height-vh-100 h-100 border-radius-lg ">
         <div class="container-fluid py-4">
-            <div class="card-header p-0 position-relative mt-2 mx-3 z-index-2">
-                <div class="bg-gradient border-radius-lg pt-4 pb-3" style="background-color: #0c2a6d">
-                    <h6 class="text-center text-white text-capitalize ps-3">Kişisel Bilgiler</h6>
-                </div>
+            @if ($errors->any())
+            <div class="alert alert-danger">
+                <ul>
+                    @foreach ($errors->all() as $error)
+                    <li>{{ $error }}</li>
+                    @endforeach
+                </ul>
             </div>
-            <div class="row mx-3 position-relative mt-4">
-                <div class="row col-md-4">
-                    <div class="col-md-4 text-end">
-                        Telefon No :
-                    </div>
-                    <div class="col-md-8">
-                        <input type="text" pattern="[0-9]" maxlength="11" placeholder="Telefon numaranız" class="col-12">
-                    </div>
-                </div>
-                <div class="row col-md-4">
-                    <div class="col-md-4 text-end">
-                        Telefon No 2 :
-                    </div>
-                    <div class="col-md-8">
-                        <input type="text" pattern="[0-9]" maxlength="11" placeholder="2. Telefon numaranız" class="col-12">
-                    </div>
-                </div>
-                <div class="row col-md-4">
-                    <div class="col-md-4 text-end">
-                        Mail :
-                    </div>
-                    <div class="col-md-8">
-                        <input type="text" pattern="[0-9]" maxlength="11" placeholder="Mail Adresiniz" class="col-12">
-                    </div>
-                </div>
-            </div>
-            <div class="row mx-3 position-relative mt-4">
-                <div class="row col-md-4">
-                    <div class="col-md-4 text-end">
-                        Web site url :
-                    </div>
-                    <div class="col-md-8">
-                        <input type="text" pattern="[0-9]" maxlength="11" placeholder="Web site adresiniz." class="col-12">
-                    </div>
-                </div>
-                <div class="row col-md-4">
-                    <div class="col-md-4 text-end">
-                        Web site url 2 :
-                    </div>
-                    <div class="col-md-8">
-                        <input type="text" pattern="[0-9]" maxlength="11" placeholder="2. web site adresiniz" class="col-12">
-                    </div>
-                </div>
-                <div class="row col-md-4">
-                    <div class="col-md-4 text-end">
-                        Mail 2 :
-                    </div>
-                    <div class="col-md-8">
-                        <input type="text" pattern="[0-9]" maxlength="11" placeholder="2. Mail Adresinz" class="col-12">
-                    </div>
-                </div>
-            </div>
-            <div class="row mx-3 position-relative mt-4">
-                <div class="row col-md-6">
-                    <div class="col-md-4 text-center">
-                        Adresiniz :
-                    </div>
-                    <div class="col-md-8">
-                        <input type="text" pattern="[0-9]" maxlength="11" placeholder="Telefon numaranız" class="col-12">
-                    </div>
-                </div>
-                <div class="row col-md-6">
-                    <div class="col-md-4 text-end">
-                        Adresiniz google konum lokasyonu :
-                    </div>
-                    <div class="col-md-8">
-                        <input type="text" pattern="[0-9]" maxlength="11" placeholder="Telefon numaranız" class="col-12">
+            @endif
+            <div class="row">
+                <div class="col-12">
+                    <div class="card my-4" style="background-color: #1a3675">
+                        <div class="card-header p-0 position-relative mt-n4 mx-3 z-index-2 " style="background-color:#202020">
+                            <div class="border-radius-lg pt-4 pb-3" style="background-color:#202020">
+                                <h5 class="text-white font-weight-bold text-capitalize ps-3 text-center">Kişisel Bilgiler</h5>
+                            </div>
+                        </div>
+                        <div class="card-body px-0 pb-2">
+                            <form action="{{route('personinfo.update',['personinfo' => $personinfo->id])}}" method="post" enctype="multipart/form-data">
+                                @csrf
+                                @method('PATCH')
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <div class="form-field mx-4">
+                                            <label for="tel" style="color: white">Telefon Numarası</label>
+                                            <input type="text" id="tel" name="tel" placeholder="Telefon numaranız" value="{{ old('tel',$personinfo->tel)}}">
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-field mx-4">
+                                            <label for="tel2" style="color: white">Telefon Numarası 2</label>
+                                            <input type="text" id="tel2" name="tel2" placeholder="2. Telefon Numaranız" value="{{ old('tel2',$personinfo->tel2)}}">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <div class="form-field mx-4 mt-3">
+                                            <label for="mail" style="color: white">Mail Adresiniz </label>
+                                            <input type="text" id="mail" name="mail" placeholder="Mail Adresiniz" value="{{ old('mail',$personinfo->mail)}}">
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-field mx-4 mt-3">
+                                            <label for="mail2" style="color: white">Mail Adresiniz 2</label>
+                                            <input type="text" id="mail2" name="mail2" placeholder="2. Mail adresiniz" value="{{ old('mail2',$personinfo->mail2)}}">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <div class="form-field mx-4 mt-3">
+                                            <label for="website_url" style="color: white">Web Site Url </label>
+                                            <input type="text" id="website_url" name="website_url" placeholder="Web Site adresiniz" value="{{ old('website_url',$personinfo->website_url)}}">
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-field mx-4 mt-3">
+                                            <label for="website_url2" style="color: white">Web Site Url 2</label>
+                                            <input type="text" id="website_url2" name="website_url2" placeholder="2. Web Site Adresiniz" value="{{ old('website_url2',$personinfo->website_url2)}}">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <div class="form-field mx-4 mt-3">
+                                            <label for="location" style="color: white">Adres Bilgisi</label>
+                                            <input type="text" id="location" name="location" placeholder="Adres Bilgileriniz (Kemalaşa mahallesi oruç sokak gibi)" value="{{ old('location',$personinfo->location)}}">
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6 mt-3">
+                                        <div class="form-field mx-4">
+                                            <label for="location_detail" style="color: white">Google Konum Bilgisi</label>
+                                            <input type="text" id="location_detail" name="location_detail" placeholder="Google haritalar adresiniz" value="{{ old('location_detail',$personinfo->location_detail)}}">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-6 mt-3">
+                                        <label class="form-field mx-4 d-flex align-items-center" for="cv_path" style="color: white">CV Dosyanız</label>
+                                        <div class="form-field mx-4 d-flex align-items-center">
+                                            <!-- d-flex ve align-items-center class'ları input ve a etiketlerini yatayda hizalar -->
+                                            <input type="file" id="cv_path" name="cv_path" class="ml-2" placeholder="cv dosyanız"> <!-- ml-2 class'ı sol boşluk bırakır -->
+                                            @if(isset($personinfo->cv_path))
+                                            <a href="{{ asset($personinfo->cv_path) }}" style="color: #ffffff" target="_blank">Önceden Yüklenmiş Dosyayı İncele</a> <!-- ml-2 class'ı sol boşluk bırakır -->
+                                            @endif
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md-6 mt-3">
+                                        <div class="form-field mx-4">
+                                            <label for="whatsap_connect_url" style="color: white">Whatsap Url</label>
+                                            <input type="text" id="whatsap_connect_url" name="whatsap_connect_url" placeholder="Whatsap iletişim adresiniz" value="{{ old('whatsap_connect_url',$personinfo->whatsap_connect_url)}}">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class=" col-md-6 mt-3">
+                                        <div class="row">
+                                            <div class="col-md-6 form-field mx-4 d-inline-block">
+                                                <label for="photograph" style="color: white">Profil Fotoğrafınız</label>
+                                                <input type="file" id="photograph" name="photograph">
+                                            </div>
+                                            @if(isset($personinfo->photograph))
+                                            <div class="col-md-6 form-field mx-4 d-inline-block">
+                                                <img src="{{ asset($personinfo->photograph) }}" style="width: 200px; height: 200px;" alt="Profil Fotoğrafı">
+                                            </div>
+                                            @endif
+                                        </div>
+
+                                        <div class=" col-md-6 form-field mx-4 mt-3">
+                                            <label for="back_ground" style="color: white">Arka Plan Fotoğrafınız</label>
+                                            <input type="file" id="back_ground" name="back_ground">
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6 mt-5">
+                                        <div class=" form-field d-flex align-items-end mt-4 mx-4">
+                                            <button type="submit" class="btn btn-success col-md-12">Kişisel Bilgilerini Kaydet</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
                     </div>
                 </div>
             </div>

@@ -5,7 +5,7 @@
     @include('merchant_panel.layouts.header')
 </head>
 
-<body class="g-sidenav-show  bg-gray-200">
+<body class="g-sidenav-show  bg-gray-400">
     @include('merchant_panel.layouts.sidebar')
     <main class="main-content position-relative max-height-vh-100 h-100 border-radius-lg ">
         <div class="container-fluid py-4">
@@ -22,40 +22,42 @@
                 <div class="col-12">
                     <div class="card my-4">
                         <div class="card-header p-0 position-relative mt-n4 mx-3 z-index-2">
-                            <div class="bg-gradient shadow-primary border-radius-lg pt-4 pb-3" style="background-color:#000000 ">
-                                <h6 class="text-center text-white text-capitalize ps-3">Sosyal Medya Hesapları</h6>
+                            <div class="shadow-primary border-radius-lg pt-4 pb-3" style="background-color:#000000">
+                                <h6 class="text-white text-capitalize ps-3">Banka Listesi</h6>
                             </div>
                         </div>
                         <div class="card-body px-0 pb-2">
                             <div class="table-responsive p-0">
-                                <table class="table   align-items-center mb-0">
+                                <table class="table align-items-center mb-0">
                                     <thead>
                                         <tr>
-                                            <th class="text-center">Sosyal Medya İkon</th>
-                                            <th class="text-center">Sosyal Medya Url</th>
+                                            <th class="text-center">Banka Adı</th>
+                                            <th class="text-center">Şahıs Adı</th>
+                                            <th class="text-center">İban</th>
                                             <th class="text-center">Sil</th>
                                             <th class="text-center">Güncelle</th>
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        @foreach($socialmedias as $socialmedia)
+                                        @foreach($bankinfos as $bankinfo)
                                         <tr>
-                                            <td class="text-center">{{$socialmedia->social_media_icon}}</td>
-                                            <td class="text-center">{{$socialmedia->social_media_url}}</td>
+                                            <td class="text-center">{{$bankinfo->bank_name}}</td>
+                                            <td class="text-center">{{$bankinfo->name_surname}}</td>
+                                            <td class="text-center">{{$bankinfo->iban_no}}</td>
                                             <td class="text-center">
-                                                <form action="{{ route('socialmedia.destroy', $socialmedia->id) }}" method="POST">
+                                                <form action="{{ route('bankinfo.destroy', $bankinfo->id) }}" method="POST">
                                                     @csrf
                                                     @method('DELETE')
                                                     <button type="submit" class="btn btn-danger">Sil</button>
                                                 </form>
                                             </td>
-                                            <td class="text-center"><a href="{{ route('socialmedia.edit', $socialmedia->id) }}" class="btn btn-info">Güncelle</button></td>
+                                            <td class="text-center"><a href="{{ route('bankinfo.edit', $bankinfo->id) }}" class="btn btn-info">Güncelle</button></td>
                                         </tr>
                                         @endforeach
                                     </tbody>
                                 </table>
                             </div>
-                            <a href="{{ route('socialmedia.create') }}" class="btn col-md-12" style="background-color:  #00a01d; color:#ffffff"> Yeni Sosyal Medya Hesabı Ekle</a>
+                            <a href="{{ route('bankinfo.create') }}" class="btn col-md-12" style="background-color:  #00a01d; color:#ffffff"> Yeni İban Ekle</a>
                         </div>
                     </div>
                 </div>

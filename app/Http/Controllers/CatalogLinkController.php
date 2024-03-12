@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\CatalogLink;
 use App\Models\User;
 use Illuminate\Http\Request;
 
@@ -38,7 +39,8 @@ class CatalogLinkController extends Controller
     {
         //
         $merchant=User::Where('url',$url)->first();
-        return view('merchant_panel.bankinfo-catalog.index',compact('merchant'));
+        $catalogs=CatalogLink::Where('merchant_id',$merchant->id)->get();
+        return view('merchant_panel.catalog.index',compact('merchant','catalogs'));
     }
 
     /**
