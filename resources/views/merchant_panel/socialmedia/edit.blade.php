@@ -18,6 +18,7 @@
     @include('merchant_panel.layouts.sidebar')
     <main class="main-content position-relative max-height-vh-100 h-100 border-radius-lg ">
         <div class="container-fluid py-4">
+            @include('merchant_panel.layouts.error-success')
             <div class="row">
                 <div class="col-12">
                     <div class="card my-4" style="background-color: #1a3675">

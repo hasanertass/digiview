@@ -18,15 +18,7 @@
     @include('merchant_panel.layouts.sidebar')
     <main class="main-content position-relative max-height-vh-100 h-100 border-radius-lg ">
         <div class="container-fluid py-4">
-            @if ($errors->any())
-            <div class="alert alert-danger">
-                <ul>
-                    @foreach ($errors->all() as $error)
-                    <li>{{ $error }}</li>
-                    @endforeach
-                </ul>
-            </div>
-            @endif
+            @include('merchant_panel.layouts.error-success')
             <div class="row">
                 <div class="col-12">
                     <div class="card my-4" style="background-color: #1a3675">
@@ -102,11 +94,10 @@
                                             <!-- d-flex ve align-items-center class'ları input ve a etiketlerini yatayda hizalar -->
                                             <input type="file" id="cv_path" name="cv_path" class="ml-2" placeholder="cv dosyanız"> <!-- ml-2 class'ı sol boşluk bırakır -->
                                             @if(isset($personinfo->cv_path))
-                                            <a href="{{ asset($personinfo->cv_path) }}" style="color: #ffffff" target="_blank">Önceden Yüklenmiş Dosyayı İncele</a> <!-- ml-2 class'ı sol boşluk bırakır -->
+                                            <a href="{{ asset($personinfo->cv_path) }}" style="color: white" onmouseover="this.classList.add('hover-effect-hover')" onmouseout="this.classList.remove('hover-effect-hover')" target="_blank">Dosyayı İncele</a> <!-- ml-2 class'ı sol boşluk bırakır -->
                                             @endif
                                         </div>
                                     </div>
-
                                     <div class="col-md-6 mt-3">
                                         <div class="form-field mx-4">
                                             <label for="whatsap_connect_url" style="color: white">Whatsap Url</label>
@@ -115,25 +106,25 @@
                                     </div>
                                 </div>
                                 <div class="row">
-                                    <div class=" col-md-6 mt-3">
-                                        <div class="row">
-                                            <div class="col-md-6 form-field mx-4 d-inline-block">
-                                                <label for="photograph" style="color: white">Profil Fotoğrafınız</label>
-                                                <input type="file" id="photograph" name="photograph">
-                                            </div>
-                                            @if(isset($personinfo->photograph))
-                                            <div class="col-md-6 form-field mx-4 d-inline-block">
-                                                <img src="{{ asset($personinfo->photograph) }}" style="width: 200px; height: 200px;" alt="Profil Fotoğrafı">
-                                            </div>
-                                            @endif
-                                        </div>
-
-                                        <div class=" col-md-6 form-field mx-4 mt-3">
-                                            <label for="back_ground" style="color: white">Arka Plan Fotoğrafınız</label>
-                                            <input type="file" id="back_ground" name="back_ground">
+                                    <div class="col-md-6">
+                                        <div class="form-field mx-4 mt-6">
+                                            <label for="photograph" style="color: white">Profil Fotoğrafınız</label>
+                                            <input type="file" id="photograph" name="photograph">
                                         </div>
                                     </div>
-                                    <div class="col-md-6 mt-5">
+                                    <div class="col-md-6">
+                                        <div class="mx-4">
+                                            @if($personinfo->photograph)
+                                            <img src="{{ asset($personinfo->photograph) }}" style="width: 200px; height: 200px;" alt="Profil Fotoğrafı">
+                                            @else
+                                            <img src="{{ asset('storage/photographs/profil.jpeg') }}" style="width: 200px; height: 200px;" alt="Varsayılan Fotoğraf">
+                                            @endif
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="row">
+                                    <div class="col-md-12 mt-5">
                                         <div class=" form-field d-flex align-items-end mt-4 mx-4">
                                             <button type="submit" class="btn btn-success col-md-12">Kişisel Bilgilerini Kaydet</button>
                                         </div>

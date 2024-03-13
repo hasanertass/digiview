@@ -4,6 +4,7 @@ use App\Http\Controllers\AuthController;
 use App\Http\Controllers\BankInfoController;
 use App\Http\Controllers\CatalogLinkController;
 use App\Http\Controllers\CompanyInfoController;
+use App\Http\Controllers\PasswordController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\PersonalInfoController;
@@ -28,6 +29,7 @@ Route::get('/login', function () {
     return view('merchant_panel.login');
 });
 
+Route::middleware(['guest'])->group(function () {
 
  Route::resource('merchant', UserController::class);
  Route::resource('personinfo', PersonalInfoController::class);
@@ -36,4 +38,8 @@ Route::get('/login', function () {
  Route::resource('companyinfo', CompanyInfoController::class);
  Route::resource('socialmedia', SocialMediaController::class);
 
+ Route::post('/change-password', [PasswordController::class, 'changePassword'])->name('change.password');
+ Route::get('/changepassword', [PasswordController::class, 'password'])->name('password');
+ Route::get('logout',[AuthController::class,'logout'])->name('logout');
+});
 Route::post('login',[AuthController::class,'login'])->name('login');

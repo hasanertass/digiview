@@ -9,21 +9,13 @@
     @include('merchant_panel.layouts.sidebar')
     <main class="main-content position-relative max-height-vh-100 h-100 border-radius-lg ">
         <div class="container-fluid py-4">
-            @if ($errors->any())
-            <div class="alert alert-danger">
-                <ul>
-                    @foreach ($errors->all() as $error)
-                    <li>{{ $error }}</li>
-                    @endforeach
-                </ul>
-            </div>
-            @endif
+            @include('merchant_panel.layouts.error-success')
             <div class="row">
                 <div class="col-12">
                     <div class="card my-4">
                         <div class="card-header p-0 position-relative mt-n4 mx-3 z-index-2">
                             <div class="bg-gradient shadow-primary border-radius-lg pt-4 pb-3" style="background-color:#000000 ">
-                                <h6 class="text-center text-white text-capitalize ps-3">Sosyal Medya Hesapları</h6>
+                                <h5 class="text-center text-white text-capitalize ps-3">Sosyal Medya Hesapları</h5>
                             </div>
                         </div>
                         <div class="card-body px-0 pb-2">
@@ -40,7 +32,7 @@
                                     <tbody>
                                         @foreach($socialmedias as $socialmedia)
                                         <tr>
-                                            <td class="text-center">{{$socialmedia->social_media_icon}}</td>
+                                            <td class="text-center"><i class="{{$socialmedia->social_media_icon}}" style="font-size: 30px;"></i></td>
                                             <td class="text-center">{{$socialmedia->social_media_url}}</td>
                                             <td class="text-center">
                                                 <form action="{{ route('socialmedia.destroy', $socialmedia->id) }}" method="POST">

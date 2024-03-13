@@ -37,18 +37,18 @@
                                 <div class="shadow-primary border-radius-lg py-3 pe-1" style="background-color:#0c2a6d;">
                                     <h4 class="font-weight-bolder text-center mt-2 mb-0" style="color:#00a01d">Digiview Müşteri Paneli</h4>
                                     <div class="row mt-3">
-
                                     </div>
                                 </div>
                             </div>
                             <div class="card-body">
+                                @include('merchant_panel.layouts.error-success')
                                 <form role="form" class="text-start" action="{{route('login')}}" method="POST">
                                     @csrf
                                     <div class="input-group input-group-outline my-3">
                                         <label class="form-label">Mail Adresiniz</label>
-                                        <input type="email" id="email" name="email" class="form-control">
+                                        <input type="email" id="email" name="email" class="form-control" value="{{ old('email')}}">
                                     </div>
-                                    <div class="input-group input-group-outline mb-3">
+                                    <div class=" input-group input-group-outline mb-3">
                                         <label class="form-label">Şİfreniz</label>
                                         <input type="password" id="password" name="password" class="form-control">
                                     </div>

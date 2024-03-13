@@ -24,36 +24,31 @@
                     <div class="card my-4" style="background-color: #1a3675">
                         <div class="card-header p-0 position-relative mt-n4 mx-3 z-index-2 " style="background-color:#202020">
                             <div class="border-radius-lg pt-4 pb-3" style="background-color:#202020">
-                                <h5 class="text-white font-weight-bold text-capitalize ps-3 text-center">Banka İban Bilgisi Ekleme</h5>
+                                <h5 class="text-white font-weight-bold text-capitalize ps-3 text-center">Şİfre Değiştirme Sayfası</h5>
                             </div>
                         </div>
                         <div class="card-body px-0 pb-2">
-                            <form action="{{route('bankinfo.store')}}" method="post">
+                            <form action="{{route('change.password')}}" method="post">
                                 @csrf
+                                @method('POST')
                                 <div class="row">
                                     <div class="col-md-6">
                                         <div class="form-field mx-4">
-                                            <label for="receiverName" style="color: white">Alıcı Ad-Soyad</label>
-                                            <input type="text" id="receiverName" name="receiverName" required>
+                                            <label for="current_password" style="color: white">Mevcut Şifre</label>
+                                            <input type="text" id="current_password" name="current_password" placeholder="Mevcut şifreniz" value="{{ old('current_password')}}">
                                         </div>
                                     </div>
                                     <div class="col-md-6">
                                         <div class="form-field mx-4">
-                                            <label for="bankName" style="color: white">Bank Name</label>
-                                            <input type="text" id="bankName" name="bankName" required>
+                                            <label for="new_password" style="color: white">Yeni Şifre</label>
+                                            <input type="text" id="new_password" name="new_password" placeholder="Yeni Şifreniz" value="{{ old('new_password')}}">
                                         </div>
                                     </div>
                                 </div>
                                 <div class="row">
-                                    <div class="col-md-6">
-                                        <div class=" form-field mx-4">
-                                            <label for="iban" class="mt-2" style="color: white">IBAN</label>
-                                            <input type="text" id="iban" name="iban" required>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-6 mt-2" style="color: black">
+                                    <div class="col-md-12">
                                         <div class=" form-field d-flex align-items-end mt-4 mx-4">
-                                            <button type="submit" class="btn btn-success col-md-12">İban Bilgisini Kaydet</button>
+                                            <button type="submit" class="btn btn-success col-md-12">Şİfreyi Değiştir</button>
                                         </div>
                                     </div>
                                 </div>

@@ -19,10 +19,9 @@ class AuthController extends Controller
                 return redirect()->route('merchant.show', ['merchant' => $user->url]);
             } else {
                 // Giriş başarısız, şifre kontrolü başarısız oldu
-                dd('başarısız');
                 return back()->withErrors([
                     'email' => 'Girilen bilgiler hatalı.',
-                ])->withInput(['email']);
+                ])->withInput([$email]);
             }
         } else {
             // Giriş başarısız, kullanıcı bulunamadı
@@ -30,5 +29,11 @@ class AuthController extends Controller
                 'email' => 'Girilen bilgiler hatalı.',
             ])->withInput();
         }
+    }
+    public function logout()
+    {
+        Auth::logout(); // Kullanıcıyı çıkış yaptır
+
+        return redirect('/login'); // Çıkış yapıldıktan sonra login sayfasına yönlendir
     }
 }
