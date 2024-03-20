@@ -88,7 +88,13 @@
                                     </div>
                                 </div>
                                 <div class="row">
-                                    <div class="col-md-12">
+                                    <div class="col-md-6 mt-3">
+                                        <div class="form-field mx-4">
+                                            <label for="description" style="color: white">Şirket Açıklama</label>
+                                            <input type="text" id="description" name="description" placeholder="Kısaca şirket bilgileri" value="{{ old('description',$companyinfo->description)}}">
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6 mt-3">
                                         <div class=" form-field d-flex align-items-end mt-4 mx-4">
                                             <button type="submit" class="btn btn-success col-md-12">Kişisel Bilgilerini Kaydet</button>
                                         </div>

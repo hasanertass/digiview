@@ -31,15 +31,30 @@
                             <form action="{{route('personinfo.update',['personinfo' => $personinfo->id])}}" method="post" enctype="multipart/form-data">
                                 @csrf
                                 @method('PATCH')
+
                                 <div class="row">
                                     <div class="col-md-6">
+                                        <div class="form-field mx-4 mt-3">
+                                            <label for="title" style="color: white">Ünvan</label>
+                                            <input type="text" id="title" name="title" placeholder="Ünvanınız" value="{{ old('title',$personinfo->title)}}">
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6 mt-3">
                                         <div class="form-field mx-4">
+                                            <label for="description" style="color: white">Kişisel Açıklama</label>
+                                            <input type="text" id="description" name="description" placeholder="Kişisel Açıklamanız" value="{{ old('description',$personinfo->description)}}">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <div class="form-field mx-4  mt-3">
                                             <label for="tel" style="color: white">Telefon Numarası</label>
                                             <input type="text" id="tel" name="tel" placeholder="Telefon numaranız" value="{{ old('tel',$personinfo->tel)}}">
                                         </div>
                                     </div>
                                     <div class="col-md-6">
-                                        <div class="form-field mx-4">
+                                        <div class="form-field mx-4  mt-3">
                                             <label for="tel2" style="color: white">Telefon Numarası 2</label>
                                             <input type="text" id="tel2" name="tel2" placeholder="2. Telefon Numaranız" value="{{ old('tel2',$personinfo->tel2)}}">
                                         </div>
@@ -88,24 +103,6 @@
                                     </div>
                                 </div>
                                 <div class="row">
-                                    <div class="col-md-6 mt-3">
-                                        <label class="form-field mx-4 d-flex align-items-center" for="cv_path" style="color: white">CV Dosyanız</label>
-                                        <div class="form-field mx-4 d-flex align-items-center">
-                                            <!-- d-flex ve align-items-center class'ları input ve a etiketlerini yatayda hizalar -->
-                                            <input type="file" id="cv_path" name="cv_path" class="ml-2" placeholder="cv dosyanız"> <!-- ml-2 class'ı sol boşluk bırakır -->
-                                            @if(isset($personinfo->cv_path))
-                                            <a href="{{ asset($personinfo->cv_path) }}" style="color: white" onmouseover="this.classList.add('hover-effect-hover')" onmouseout="this.classList.remove('hover-effect-hover')" target="_blank">Dosyayı İncele</a> <!-- ml-2 class'ı sol boşluk bırakır -->
-                                            @endif
-                                        </div>
-                                    </div>
-                                    <div class="col-md-6 mt-3">
-                                        <div class="form-field mx-4">
-                                            <label for="whatsap_connect_url" style="color: white">Whatsap Url</label>
-                                            <input type="text" id="whatsap_connect_url" name="whatsap_connect_url" placeholder="Whatsap iletişim adresiniz" value="{{ old('whatsap_connect_url',$personinfo->whatsap_connect_url)}}">
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="row">
                                     <div class="col-md-6">
                                         <div class="form-field mx-4 mt-6">
                                             <label for="photograph" style="color: white">Profil Fotoğrafınız</label>
@@ -113,7 +110,7 @@
                                         </div>
                                     </div>
                                     <div class="col-md-6">
-                                        <div class="mx-4">
+                                        <div class="mx-4 mt-4">
                                             @if($personinfo->photograph)
                                             <img src="{{ asset($personinfo->photograph) }}" style="width: 200px; height: 200px;" alt="Profil Fotoğrafı">
                                             @else
@@ -122,9 +119,31 @@
                                         </div>
                                     </div>
                                 </div>
-
                                 <div class="row">
-                                    <div class="col-md-12 mt-5">
+                                    <div class="col-md-6">
+                                        <div class="form-field mx-4 mt-6">
+                                            <label for="backand_photograph" style="color: white">Arka Plan Fotoğrafınız <span style="color: red"> !!! Tercih ettiğiniz temaya göre kullanılacaktır !!!</span></label>
+                                            <input type="file" id="backand_photograph" name="backand_photograph">
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="mx-4 mt-4">
+                                            @if($personinfo->backand_photograph)
+                                            <img src="{{ asset($personinfo->backand_photograph) }}" style="width: 200px; height: 200px;" alt="Arka Plan Fotoğrafı">
+                                            @else
+                                            <img src="{{ asset('storage/photographs/profil.jpeg') }}" style="width: 200px; height: 200px;" alt="Varsayılan Fotoğraf">
+                                            @endif
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <div class="form-field mx-4">
+                                            <label for="whatsap_connect_url" style="color: white">Whatsap Url</label>
+                                            <input type="text" id="whatsap_connect_url" name="whatsap_connect_url" placeholder="Whatsap iletişim adresiniz" value="{{ old('whatsap_connect_url',$personinfo->whatsap_connect_url)}}">
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
                                         <div class=" form-field d-flex align-items-end mt-4 mx-4">
                                             <button type="submit" class="btn btn-success col-md-12">Kişisel Bilgilerini Kaydet</button>
                                         </div>

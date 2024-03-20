@@ -75,6 +75,7 @@ class CompanyInfoController extends Controller
             'VKN' => 'nullable|string|max:50', // Vergi kimlik numarası (isteğe bağlı, en fazla 255 karakter)
             'billing_address' => 'nullable|string|max:1000', // Fatura adresi (isteğe bağlı, en fazla 1000 karakter)
             'address' => 'nullable|string|max:1000', // Adres (isteğe bağlı, en fazla 1000 karakter)
+            'description'=>'nullable|string|max:300',
         ]);
         $companyinfo=CompanyInfo::Where('merchant_id',$this->user->id)->first();
         if($companyinfo->sector==null){
@@ -88,6 +89,7 @@ class CompanyInfoController extends Controller
                 'VKN'=>$request->VKN,
                 'billing_address'=>$request->billing_address,
                 'address'=>$request->address,
+                'description'=>$request->description,
             ]);
         }else {
             $companyinfo->sector=$request->sector;
@@ -98,6 +100,7 @@ class CompanyInfoController extends Controller
             $companyinfo->VKN=$request->VKN;
             $companyinfo->billing_address=$request->billing_address;
             $companyinfo->address=$request->address;
+            $companyinfo->description=$request->description;
             $companyinfo->save();
         }
         return redirect()->route('companyinfo.show', ['companyinfo' => $this->user->url])->with('success', 'Şİrket Bİlgileri Güncellendi.');

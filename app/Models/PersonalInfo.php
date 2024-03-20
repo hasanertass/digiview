@@ -12,7 +12,7 @@ class PersonalInfo extends Model
     public $timestamps = false;
     protected $primaryKey = 'id';
 
-    protected $fillable = ['id', 'merchant_id', 'tel', 'tel2', 'mail', 'mail2', 'location', 'location_detail', 'website_url', 'website_url2', 'photograph', 'cv_path', 'whatsap_connect_url'];
+    protected $fillable = ['id', 'merchant_id','title','description' ,'tel', 'tel2', 'mail', 'mail2', 'location', 'location_detail', 'website_url', 'website_url2', 'photograph', 'backand_photograph', 'whatsap_connect_url'];
     public function user()
     {
         return $this->belongsTo(User::class, 'merchant_id');

@@ -12,7 +12,7 @@ class CatalogLink extends Model
     public $timestamps = false;
     protected $primaryKey = 'id';
 
-    protected $fillable = ['id', 'merchant_id', 'file_path', 'icon_link','catalog_name'];
+    protected $fillable = ['id', 'merchant_id', 'file_path', 'icon_link','catalog_name','download_number'];
     public function user()
     {
         return $this->belongsTo(User::class, 'merchant_id');

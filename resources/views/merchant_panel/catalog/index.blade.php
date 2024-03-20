@@ -30,6 +30,7 @@
                                     <thead>
                                         <tr>
                                             <th class="text-center">Katalog Adı</th>
+                                            <th class="text-center">İndirilme Sayısı</th>
                                             <th class="text-center">Katalog Dosyası</th>
                                             <th class="text-center">Sil</th>
                                             <th class="text-center">Güncelle</th>
@@ -39,6 +40,7 @@
                                         @foreach($catalogs as $catalog)
                                         <tr>
                                             <td class="text-center">{{$catalog->catalog_name}}</td>
+                                            <td class="text-center" style="color: red;"><b>{{$catalog->download_number}}</b></td>
                                             <td class="text-center">
                                                 @if(isset($catalog->file_path))
                                                 <a href="{{ asset($catalog->file_path) }}" class="hover-effect" onmouseover="this.classList.add('hover-effect-hover')" onmouseout="this.classList.remove('hover-effect-hover')" target="_blank">Dosyayı İncele</a> <!-- ml-2 class'ı sol boşluk bırakır -->

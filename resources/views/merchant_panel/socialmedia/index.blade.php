@@ -32,7 +32,13 @@
                                     <tbody>
                                         @foreach($socialmedias as $socialmedia)
                                         <tr>
+                                            @if($socialmedia->social_media_icon=='fa fa-x-twitter')
+                                            <td class="text-center">
+                                                <img src="{{ asset('storage/x-twitter.svg') }}" style="width: 30px; height: 30px;" alt="SVG Image">
+                                            </td>
+                                            @else
                                             <td class="text-center"><i class="{{$socialmedia->social_media_icon}}" style="font-size: 30px;"></i></td>
+                                            @endif
                                             <td class="text-center">{{$socialmedia->social_media_url}}</td>
                                             <td class="text-center">
                                                 <form action="{{ route('socialmedia.destroy', $socialmedia->id) }}" method="POST">

@@ -32,26 +32,26 @@
                                 @csrf
                                 <div class="row">
                                     <div class="col-md-6">
-                                        <div class="form-field mx-4 ">
+                                        <div class="form-field mx-4">
                                             <label for="bankName" class="mt-2" style="color: white">Sosyal Medya Adı</label>
                                             <select id="socialMediaSelect" name="socialMediaSelect" onchange="updateSocialMediaFields()" class="form-control" style="background-color: #ffffff">
-                                                <option value="facebook">Facebook</option>
-                                                <option value="x-twitter">X</option>
-                                                <option value="youtube">Youtube</option>
-                                                <option value="linkedin">Linkedin</option>
-                                                <option value="pinterest">Pinterest</option>
-                                                <option value="tiktok">Tiktok</option>
-                                                <option value="snapchat">Snapchat</option>
-                                                <option value="telegram">Telegram</option>
-                                                <option value="github">Github</option>
-                                                <option value="spotify">Spotify</option>
+                                                <option value="facebook|Facebook">Facebook</option>
+                                                <option value="x-twitter|X">X</option>
+                                                <option value="youtube|Youtube">Youtube</option>
+                                                <option value="linkedin|Linkedin">Linkedin</option>
+                                                <option value="pinterest|Pinterest">Pinterest</option>
+                                                <option value="tiktok|Tiktok">Tiktok</option>
+                                                <option value="snapchat|Snapchat">Snapchat</option>
+                                                <option value="telegram|Telegram">Telegram</option>
+                                                <option value="github|Github">Github</option>
+                                                <option value="spotify|Spotify">Spotify</option>
                                             </select>
                                         </div>
                                     </div>
                                     <div class="col-md-6">
                                         <div class=" form-field mx-4">
                                             <label for="social_media_url" class="mt-2" style="color: white">Sosyal Medya URL</label>
-                                            <input type="text" id="social_media_url" name="social_media_url" class="form-control" style="background-color: #ffffff" required>
+                                            <input type="text" id="social_media_url" name="social_media_url" class="form-control" style="background-color: #ffffff" placeholder="Sosyal Medya Url Adresiniz" value="{{old('social_media_url')}}" required>
                                         </div>
                                     </div>
                                 </div>

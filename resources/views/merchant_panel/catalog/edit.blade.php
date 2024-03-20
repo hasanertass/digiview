@@ -46,7 +46,7 @@
                                     <div class="col-md-6">
                                         <div class="form-field mx-4">
                                             <label for="catalog_name" style="color: white">İndirilebilir içerik Adı</label>
-                                            <input type="text" id="catalog_name" name="catalog_name" value="{{$catalog->catalog_name}}" required>
+                                            <input type="text" id="catalog_name" name="catalog_name" placeholder="İndirilerbilir İçerik Adınız" value="{{ old('catalog_name',$catalog->catalog_name)}}" required>
                                         </div>
                                     </div>
                                 </div>

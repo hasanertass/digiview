@@ -41,7 +41,7 @@ class BankInfoController extends Controller
     {
         //
         $validatedData = $request->validate([
-            'iban' => 'required|string|max:26',
+            'iban' => 'required|string|max:36',
             'receiverName' => 'required|string',
             'bankName' => 'required|',
         ]);
@@ -84,7 +84,7 @@ class BankInfoController extends Controller
         //
         try {
             $validatedData = $request->validate([
-                'iban' => 'required|string|max:26',
+                'iban' => 'required|string|max:36',
                 'receiverName' => 'required|string',
                 'bankName' => 'required|',
             ]);

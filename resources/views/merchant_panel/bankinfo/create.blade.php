@@ -34,13 +34,13 @@
                                     <div class="col-md-6">
                                         <div class="form-field mx-4">
                                             <label for="receiverName" style="color: white">Alıcı Ad-Soyad</label>
-                                            <input type="text" id="receiverName" name="receiverName" required>
+                                            <input type="text" id="receiverName" name="receiverName" placeholder="İban sahibi adı ve soyadı" required value="{{old('receiverName')}}">
                                         </div>
                                     </div>
                                     <div class="col-md-6">
                                         <div class="form-field mx-4">
                                             <label for="bankName" style="color: white">Bank Name</label>
-                                            <input type="text" id="bankName" name="bankName" required>
+                                            <input type="text" id="bankName" name="bankName" value="{{old('bankname')}}" placeholder="Banka Adı" required>
                                         </div>
                                     </div>
                                 </div>
@@ -48,7 +48,7 @@
                                     <div class="col-md-6">
                                         <div class=" form-field mx-4">
                                             <label for="iban" class="mt-2" style="color: white">IBAN</label>
-                                            <input type="text" id="iban" name="iban" required>
+                                            <input type="text" id="iban" name="iban" value="{{old('iban')}}" placeholder="İban Numarası" required>
                                         </div>
                                     </div>
                                     <div class="col-md-6 mt-2" style="color: black">

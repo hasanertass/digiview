@@ -35,13 +35,13 @@
                                     <div class="col-md-6">
                                         <div class="form-field mx-4">
                                             <label for="receiverName" style="color: white">Alıcı Ad-Soyad</label>
-                                            <input type="text" id="receiverName" value="{{$bankinfo->name_surname}}" name="receiverName" required>
+                                            <input type="text" id="receiverName" value="{{ old('receiverName',$bankinfo->name_surname)}}" placeholder="İban sahibi adı ve soyadı" name="receiverName" required>
                                         </div>
                                     </div>
                                     <div class="col-md-6">
                                         <div class="form-field mx-4">
                                             <label for="bankName" style="color: white">Bank Name</label>
-                                            <input type="text" id="bankName" value="{{$bankinfo->bank_name}}" name="bankName" required>
+                                            <input type="text" id="bankName" value="{{ old('bankname',$bankinfo->bank_name)}}" placeholder="Banka Adı" name="bankName" required>
                                         </div>
                                     </div>
                                 </div>
@@ -49,7 +49,7 @@
                                     <div class="col-md-6">
                                         <div class=" form-field mx-4">
                                             <label for="iban" class="mt-2" style="color: white">IBAN</label>
-                                            <input type="text" id="iban" value="{{$bankinfo->iban_no}}" name="iban" required>
+                                            <input type="text" id="iban" value="{{ old('iban',$bankinfo->iban_no)}}" placeholder="İban Numarası" name="iban" required>
                                         </div>
                                     </div>
                                     <div class="col-md-6 mt-2" style="color: black">

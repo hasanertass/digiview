@@ -8,7 +8,10 @@ use App\Http\Controllers\PasswordController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\PersonalInfoController;
+use App\Http\Controllers\Rehber;
 use App\Http\Controllers\SocialMediaController;
+use App\Http\Controllers\SubUserController;
+use App\Http\Controllers\Ui_Controller;
 
 /*
 |--------------------------------------------------------------------------
@@ -25,6 +28,7 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+
 Route::get('/login', function () {
     return view('merchant_panel.login');
 });
@@ -37,9 +41,18 @@ Route::middleware(['guest'])->group(function () {
  Route::resource('catalog', CatalogLinkController::class);
  Route::resource('companyinfo', CompanyInfoController::class);
  Route::resource('socialmedia', SocialMediaController::class);
+ Route::resource('subuser', SubUserController::class);
 
  Route::post('/change-password', [PasswordController::class, 'changePassword'])->name('change.password');
  Route::get('/changepassword', [PasswordController::class, 'password'])->name('password');
  Route::get('logout',[AuthController::class,'logout'])->name('logout');
 });
+
+Route::get('/{url}/rehber', [Rehber::class, 'index'])->name('rehber');
+Route::get('/{url}/{id}/rehber', [Rehber::class, 'index2'])->name('rehber2');
+
 Route::post('login',[AuthController::class,'login'])->name('login');
+
+Route::get('/{url}',[Ui_Controller::class,'ui'])->name('ui');
+Route::get('/{url}/{id}',[Ui_Controller::class,'ui_business'])->name('ui_business');
+Route::post('/{id}',[Ui_Controller::class,'download'])->name('download');

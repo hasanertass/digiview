@@ -66,6 +66,23 @@
                 </a>
             </li>
             <li class="nav-item">
+                @if ($merchant->packet_type == 'digiviewbusiness')
+                <a class="nav-link text-white" href="{{ route('subuser.show', ['subuser' => $merchant->url]) }}">
+                    <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
+                        <i class="material-icons opacity-10">person_add</i>
+                    </div>
+                    <span class="nav-link-text ms-1">Alt Kullanıcılar</span>
+                </a>
+                @else
+                <a class="nav-link text-white disabled" href="#">
+                    <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
+                        <i class="material-icons opacity-10">person_add</i>
+                    </div>
+                    <span class="nav-link-text ms-1">Alt Kullanıcılar</span>
+                </a>
+                @endif
+            </li>
+            <li class="nav-item">
                 <a class="nav-link text-white " href="{{ route('logout') }}">
                     <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
                         <i class="material-icons opacity-10">logout</i>

@@ -45,9 +45,14 @@ class SocialMediaController extends Controller
             'socialMediaSelect' => 'required|string', 
             'social_media_url' => 'nullable|url|max:2000', 
         ]);
+        $selectedSocialMedia = $request->input('socialMediaSelect');
+        $socialMediaParts = explode('|', $selectedSocialMedia);
+        $socialMediaValue = $socialMediaParts[0]; // Örneğin: "facebook"
+        $socialMediaText = $socialMediaParts[1]; // Örneğin: "Facebook"
         SocialMedia::create([
             'merchant_id'=>$this->user->id,
-            'social_media_icon'=>'fa fa-'.$request->socialMediaSelect,
+            'social_media_icon'=>'fa fa-'.$socialMediaValue,
+            'social_media_name'=>$socialMediaText,
             'social_media_url'=>$request->social_media_url,
         ]);
         return redirect()->route('socialmedia.show', ['socialmedia' => $this->user->url])->with('success', 'Sosyal medya hesap bilgisi ekleme işlemi başarılı.');
@@ -87,8 +92,13 @@ class SocialMediaController extends Controller
                 'socialMediaSelect' => 'required|string',
                 'social_media_url' => 'nullable|url|max:2000',
             ]);
+            $selectedSocialMedia = $request->input('socialMediaSelect');
+            $socialMediaParts = explode('|', $selectedSocialMedia);
+            $socialMediaValue = $socialMediaParts[0]; // Örneğin: "facebook"
+            $socialMediaText = $socialMediaParts[1]; // Örneğin: "Facebook"
             $socialmedia=SocialMedia::findOrFail($id);
-            $socialmedia->social_media_icon='fa fa-'.$request->socialMediaSelect;
+            $socialmedia->social_media_icon='fa fa-'.$request->socialMediaValue;
+            $socialmedia->social_media_name=$socialMediaText;
             $socialmedia->social_media_url=$request->social_media_url;
             $socialmedia->save();
             return redirect()->route('socialmedia.show', ['socialmedia' => $this->user->url])->with('success', 'Sosyal medya hesap bilgileri güncellendi.');

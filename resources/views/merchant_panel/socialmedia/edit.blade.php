@@ -53,7 +53,7 @@
                                     <div class="col-md-6">
                                         <div class="form-field mx-4">
                                             <label for="social_media_url" style="color: white">Sosyal Medya URL</label>
-                                            <input type="text" id="social_media_url" value="{{$socialmedia->social_media_url}}" name="social_media_url" required>
+                                            <input type="text" id="social_media_url" placeholder="Sosyal Medya Url Adresiniz" value="{{old('catalog_name',$socialmedia->social_media_url)}}" name="social_media_url" required>
                                         </div>
                                     </div>
                                 </div>
